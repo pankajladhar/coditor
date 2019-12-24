@@ -49,6 +49,7 @@ const App = () => {
 
   const onEditorChange = code => {
     dispatch({ type: "SHOW_ERRORS", payload: undefined });
+    dispatch({ type: "SHOW_RESULTS", payload: undefined });
     dispatch({ type: "STORE_CODE", payload: code });
   };
 
