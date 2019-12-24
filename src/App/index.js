@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Editor from "./../Components/Editor/editor";
+import Problem from "./../Components/Problem/problem";
 import { transpileCode, generateScriptTag } from "./helpers";
 import "./App.scss";
 
@@ -100,10 +101,7 @@ class App extends Component {
       <div className="container">
         <main>
           <section className="left-container">
-            <div
-              className="content"
-              dangerouslySetInnerHTML={{ __html: some.problemMarkup }}
-            />
+            <Problem content={some.problemMarkup} />
           </section>
           <section className="right-container">
             <Editor onEditorChange={this.onEditorChange} />
