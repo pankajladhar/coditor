@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import Editor from "./../Components/Editor/editor";
 import Problem from "./../Components/Problem/problem";
 import CodeError from "./../Components/CodeError/CodeError";
+import TestResults from "./../Components/TestResults/TestResults";
 import { fetchProblem } from "./../helpers";
 import { transpileCode, generateScriptTag } from "./helpers";
 import "./App.scss";
@@ -51,6 +52,10 @@ class App extends Component {
     return <CodeError error={this.state.error} />;
   };
 
+  renderTestResults = () => {
+    return <TestResults results={this.state.success} />;
+  };
+
   async componentDidMount() {
     const data = await fetchProblem(1);
     this.setState({
@@ -94,9 +99,7 @@ class App extends Component {
             </main>
           )}
         </Fragment>
-        {this.state.success && (
-          <pre className="sucess">{this.state.success}</pre>
-        )}
+        {this.state.success && this.renderTestResults()}
       </div>
     );
   }
