@@ -15,6 +15,10 @@ const appReducer = (state, action) => {
       return { ...state, data: action.payload };
     case "STORE_CODE":
       return { ...state, code: action.payload };
+    case "SHOW_RESULTS":
+      return { ...state, results: action.payload };
+    case "SHOW_ERRORS":
+      return { ...state, error: action.payload };
     default:
       throw new Error();
   }
@@ -26,7 +30,7 @@ const App = () => {
     data: {},
     code: "",
     error: undefined,
-    success: undefined
+    results: undefined
   };
   const iframeRef = useRef();
 
@@ -36,43 +40,55 @@ const App = () => {
   };
 
   const renderCodeError = () => {
-    return <CodeError error={this.state.error} />;
+    return <CodeError error={state.error} />;
   };
 
   const renderTestResults = () => {
-    return <TestResults results={this.state.success} />;
+    return <TestResults results={state.results} />;
   };
 
   const onEditorChange = code => {
+    dispatch({ type: "SHOW_ERRORS", payload: undefined });
     dispatch({ type: "STORE_CODE", payload: code });
   };
 
   const handleClick = () => {
-    let code;
+    let transpiledCode;
     try {
-      code = transpileCode(this.state.value);
+      transpiledCode = transpileCode(state.code);
     } catch ({ stack }) {
-      this.setState({
-        error: stack.substring(0, stack.indexOf("at Parser."))
+      dispatch({
+        type: "SHOW_ERRORS",
+        payload: stack.substring(0, stack.indexOf("at Parser."))
       });
       return;
     }
     const scriptTag = generateScriptTag(
-      code,
+      transpiledCode,
       state.data.assertations,
       state.data.functionName
     );
+
     iframeRef.current.srcdoc = scriptTag;
   };
 
   const loadData = useCallback(async () => {
     const data = await fetchProblem(1);
     dispatch({ type: "STORE_DATA", payload: data });
+    dispatch({ type: "STORE_CODE", payload: data.defination });
     dispatch({ type: "DISABLE_LOADER" });
   }, []);
 
   useEffect(() => {
     loadData();
+    window.addEventListener("message", e => {
+      if (e.data.type === "RUN_TIME_ERROR") {
+        dispatch({ type: "SHOW_ERRORS", payload: e.data.response });
+      }
+      if (e.data.type === "TEST_RESULTS") {
+        dispatch({ type: "SHOW_RESULTS", payload: e.data.response });
+      }
+    });
   }, [loadData]);
 
   return (
@@ -86,8 +102,12 @@ const App = () => {
               <Problem content={state.data.problemStatment} />
             </section>
             <section className="right-container">
-              <Editor onEditorChange={onEditorChange} initialDefination={state.data.defination} />
+              <Editor
+                onEditorChange={onEditorChange}
+                initialDefination={state.data.defination}
+              />
               {state.error && renderCodeError()}
+              {state.results && renderTestResults()}
             </section>
             <iframe title="code iframe" ref={iframeRef}></iframe>
           </main>

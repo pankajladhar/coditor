@@ -1,7 +1,7 @@
 import * as babel from "@babel/standalone";
 
 const assert = `
-      const assert = (current, expected) => current.toString() === expected.toString() ? "Pass" : "Fail";
+      const assert = (current, expected) => current === expected ? "Pass" : "Fail";
     `;
 
 const transpileCode = input => {
