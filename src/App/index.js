@@ -1,56 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Editor from "./../Components/Editor/editor";
 import Problem from "./../Components/Problem/problem";
+import CodeError from "./../Components/CodeError/CodeError";
+import { fetchProblem } from "./../helpers";
 import { transpileCode, generateScriptTag } from "./helpers";
 import "./App.scss";
-
-const some = {
-  problemMarkup: `
-  <div><p>Given a 32-bit signed integer, reverse digits of an integer.</p>
-
-<p><strong>Example 1:</strong></p>
-
-<pre><strong>Input:</strong> 123
-<strong>Output:</strong> 321
-</pre>
-
-<p><strong>Example 2:</strong></p>
-
-<pre><strong>Input:</strong> -123
-<strong>Output:</strong> -321
-</pre>
-
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> 120
-<strong>Output:</strong> 21
-</pre>
-
-<p><strong>Note:</strong><br>
-Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2<sup>31</sup>,&nbsp; 2<sup>31&nbsp;</sup>− 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
-</div>`,
-  functionName: "reverse",
-  assertations: [
-    {
-      input: [123],
-      output: 321
-    },
-    {
-      input: [-123],
-      output: -321
-    },
-    {
-      input: [120],
-      output: 21
-    }
-  ]
-};
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.iframeRef = React.createRef();
     this.state = {
+      loading: true,
+      data: {},
       value: "",
       error: undefined,
       success: undefined
@@ -68,9 +30,9 @@ class App extends Component {
       return;
     }
     const scriptTag = generateScriptTag(
-      code,
-      some.assertations,
-      some.functionName
+      code
+      // some.assertations,
+      // some.functionName
     );
     this.iframeRef.current.srcdoc = scriptTag;
   };
@@ -81,7 +43,21 @@ class App extends Component {
     });
   };
 
-  componentDidMount() {
+  renderLoader = () => {
+    return <div className="loading">loading ...</div>;
+  };
+
+  renderCodeError = () => {
+    return <CodeError error={this.state.error} />;
+  };
+
+  async componentDidMount() {
+    const data = await fetchProblem(1);
+    this.setState({
+      loading: false,
+      data
+    });
+
     window.addEventListener("message", e => {
       if (e.data.type === "RUN_TIME_ERROR") {
         this.setState({
@@ -97,23 +73,27 @@ class App extends Component {
   }
 
   render() {
+    const { problemStatment } = this.state.data;
     return (
       <div className="container">
-        <main>
-          <section className="left-container">
-            <Problem content={some.problemMarkup} />
-          </section>
-          <section className="right-container">
-            <Editor onEditorChange={this.onEditorChange} />
-            {this.state.error && (
-              <pre className="error">{this.state.error}</pre>
-            )}
-          </section>
-        </main>
-        <iframe title="hrmlo" ref={this.iframeRef}></iframe>
-        <button className="btn" onClick={this.handleClick}>
-          Run
-        </button>
+        {this.state.loading && this.renderLoader()}
+        <Fragment>
+          {!this.state.loading && (
+            <main>
+              <section className="left-container">
+                <Problem content={problemStatment} />
+              </section>
+              <section className="right-container">
+                <Editor onEditorChange={this.onEditorChange} />
+                {this.state.error && this.renderCodeError()}
+              </section>
+              <iframe title="hrmlo" ref={this.iframeRef}></iframe>
+              <button className="btn" onClick={this.handleClick}>
+                Run
+              </button>
+            </main>
+          )}
+        </Fragment>
         {this.state.success && (
           <pre className="sucess">{this.state.success}</pre>
         )}
