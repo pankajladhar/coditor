@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import { Controlled as CodeMirror } from "react-codemirror2";
+import Editor from "./../Components/Editor/editor";
 import { transpileCode, generateScriptTag } from "./helpers";
 import "./App.scss";
-require("codemirror/mode/xml/xml.js");
-require("codemirror/mode/javascript/javascript.js");
-require("codemirror/lib/codemirror.css");
-require("codemirror/theme/monokai.css");
 
 const some = {
   problemMarkup: `
@@ -49,11 +45,6 @@ Assume we are dealing with an environment which could only store integers within
   ]
 };
 
-const options = {
-  mode: "javascript",
-  theme: "monokai",
-  lineNumbers: true
-};
 class App extends Component {
   constructor(props) {
     super(props);
@@ -64,27 +55,6 @@ class App extends Component {
       success: undefined
     };
   }
-  // serverside
-  // handleClick = async () => {
-  //   const rawResponse = await fetch(
-  //     "http://localhost:5000/api/v1/coditor/run",
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify({ code: this.state.value })
-  //     }
-  //   );
-  //   const content = await rawResponse.json();
-
-  //   this.setState({
-  //     error: content.error
-  //   });
-  // };
-
-  //client side
 
   handleClick = () => {
     let code;
@@ -96,8 +66,18 @@ class App extends Component {
       });
       return;
     }
-    const scriptTag = generateScriptTag(code, some.assertations, some.functionName);
+    const scriptTag = generateScriptTag(
+      code,
+      some.assertations,
+      some.functionName
+    );
     this.iframeRef.current.srcdoc = scriptTag;
+  };
+
+  onEditorChange = value => {
+    this.setState({
+      value
+    });
   };
 
   componentDidMount() {
@@ -126,20 +106,16 @@ class App extends Component {
             />
           </section>
           <section className="right-container">
-            <CodeMirror
-              value={this.state.value}
-              options={options}
-              onBeforeChange={(editor, data, value) => {
-                this.setState({ value });
-              }}
-            />
+            <Editor onEditorChange={this.onEditorChange} />
             {this.state.error && (
               <pre className="error">{this.state.error}</pre>
             )}
           </section>
         </main>
         <iframe title="hrmlo" ref={this.iframeRef}></iframe>
-        <button className="btn" onClick={this.handleClick}>Run</button>
+        <button className="btn" onClick={this.handleClick}>
+          Run
+        </button>
         {this.state.success && (
           <pre className="sucess">{this.state.success}</pre>
         )}
