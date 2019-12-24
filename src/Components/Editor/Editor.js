@@ -13,14 +13,14 @@ const getOptions = ({ theme, mode }) => {
 };
 
 const Editor = props => {
-  const { theme, mode, onEditorChange } = props;
-
+  const { theme, mode, onEditorChange, initialDefination } = props;
+  
   const options = getOptions({ theme, mode });
 
   require(`codemirror/theme/${theme}.css`);
   require(`codemirror/mode/${mode}/${mode}.js`);
 
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState(initialDefination);
 
   const handleBeforeChange = value => {
     setCode(value);

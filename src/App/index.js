@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { useReducer, useEffect, useCallback, useRef } from "react";
 import Editor from "./../Components/Editor/Editor";
 import Problem from "./../Components/Problem/problem";
 import CodeError from "./../Components/CodeError/CodeError";
@@ -7,20 +7,47 @@ import { fetchProblem } from "./../helpers";
 import { transpileCode, generateScriptTag } from "./helpers";
 import "./App.scss";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.iframeRef = React.createRef();
-    this.state = {
-      loading: true,
-      data: {},
-      value: "",
-      error: undefined,
-      success: undefined
-    };
+const appReducer = (state, action) => {
+  switch (action.type) {
+    case "DISABLE_LOADER":
+      return { ...state, loading: false };
+    case "STORE_DATA":
+      return { ...state, data: action.payload };
+    case "STORE_CODE":
+      return { ...state, code: action.payload };
+    default:
+      throw new Error();
   }
+};
 
-  handleClick = () => {
+const App = () => {
+  const initialState = {
+    loading: true,
+    data: {},
+    code: "",
+    error: undefined,
+    success: undefined
+  };
+  const iframeRef = useRef();
+
+  const [state, dispatch] = useReducer(appReducer, initialState);
+  const renderLoader = () => {
+    return <div className="loading">loading ...</div>;
+  };
+
+  const renderCodeError = () => {
+    return <CodeError error={this.state.error} />;
+  };
+
+  const renderTestResults = () => {
+    return <TestResults results={this.state.success} />;
+  };
+
+  const onEditorChange = code => {
+    dispatch({ type: "STORE_CODE", payload: code });
+  };
+
+  const handleClick = () => {
     let code;
     try {
       code = transpileCode(this.state.value);
@@ -31,78 +58,46 @@ class App extends Component {
       return;
     }
     const scriptTag = generateScriptTag(
-      code
-      // some.assertations,
-      // some.functionName
+      code,
+      state.data.assertations,
+      state.data.functionName
     );
-    this.iframeRef.current.srcdoc = scriptTag;
+    iframeRef.current.srcdoc = scriptTag;
   };
 
-  onEditorChange = value => {
-    this.setState({
-      value
-    });
-  };
-
-  renderLoader = () => {
-    return <div className="loading">loading ...</div>;
-  };
-
-  renderCodeError = () => {
-    return <CodeError error={this.state.error} />;
-  };
-
-  renderTestResults = () => {
-    return <TestResults results={this.state.success} />;
-  };
-
-  async componentDidMount() {
+  const loadData = useCallback(async () => {
     const data = await fetchProblem(1);
-    this.setState({
-      loading: false,
-      data
-    });
+    dispatch({ type: "STORE_DATA", payload: data });
+    dispatch({ type: "DISABLE_LOADER" });
+  }, []);
 
-    window.addEventListener("message", e => {
-      if (e.data.type === "RUN_TIME_ERROR") {
-        this.setState({
-          error: e.data.response
-        });
-      }
-      if (e.data.type === "TEST_RESULTS") {
-        this.setState({
-          success: e.data.response
-        });
-      }
-    });
-  }
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
-  render() {
-    const { problemStatment } = this.state.data;
-    return (
-      <div className="container">
-        {this.state.loading && this.renderLoader()}
-        <Fragment>
-          {!this.state.loading && (
-            <main>
-              <section className="left-container">
-                <Problem content={problemStatment} />
-              </section>
-              <section className="right-container">
-                <Editor onEditorChange={this.onEditorChange} />
-                {this.state.error && this.renderCodeError()}
-              </section>
-              <iframe title="hrmlo" ref={this.iframeRef}></iframe>
-              <button className="btn" onClick={this.handleClick}>
-                Run
-              </button>
-            </main>
-          )}
-        </Fragment>
-        {this.state.success && this.renderTestResults()}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="container">
+      {state.loading ? (
+        renderLoader()
+      ) : (
+        <div className="container">
+          <main>
+            <section className="left-container">
+              <Problem content={state.data.problemStatment} />
+            </section>
+            <section className="right-container">
+              <Editor onEditorChange={onEditorChange} initialDefination={state.data.defination} />
+              {state.error && renderCodeError()}
+            </section>
+            <iframe title="code iframe" ref={iframeRef}></iframe>
+          </main>
+          <button className="btn" onClick={handleClick}>
+            Run
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default App;
