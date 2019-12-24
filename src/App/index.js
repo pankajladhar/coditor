@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Editor from "./../Components/Editor/editor";
+import Editor from "./../Components/Editor/Editor";
 import Problem from "./../Components/Problem/problem";
 import CodeError from "./../Components/CodeError/CodeError";
 import TestResults from "./../Components/TestResults/TestResults";
