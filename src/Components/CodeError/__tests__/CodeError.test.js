@@ -1,13 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Problem from "./../Problem";
+import CodeError from "./../CodeError";
 
-describe("<Problem /> ", () => {
+describe("<CodeError /> ", () => {
   it("should render properly", () => {
     const tree = renderer.create(
-      <Problem
-        content={'<div>Problem statement</div>'}
-      />
+      <CodeError error={'{"Test-1":"Fail","Test-2":"Fail","Test-3":"Fail"}'} />
     );
     expect(tree.toJSON()).toMatchSnapshot();
   });

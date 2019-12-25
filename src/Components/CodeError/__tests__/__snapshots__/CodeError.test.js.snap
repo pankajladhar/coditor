@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CodeError />  should render properly 1`] = `
+<pre
+  className="error"
+>
+  {"Test-1":"Fail","Test-2":"Fail","Test-3":"Fail"}
+</pre>
+`;
