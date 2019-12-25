@@ -1,59 +1,134 @@
 .container {
-  main {
-    display: flex;
-    section {
-      flex: 1;
-    }
+
+  .instruction {
+    min-height: 100px;
+    padding: 10px;
   }
 
-  .left-container {
-    padding: 0 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    border-right: 1px solid #eeeeee;
-    .content {
-      font-size: 14px;
-      color: #263238;
-      pre {
-        background: #f7f9fa;
-        padding: 10px 15px;
-        color: #263238;
-        line-height: 1.6;
-        font-size: 13px;
-        border-radius: 3px;
-        white-space: pre-wrap;
+  .header {
+    padding: 10px;
+    background: #262822;
+    color: #fff;
+    text-align: center;
+    display: flex;
+
+    h1{
+      padding: 6px 0px;
+      font-size: 25px;
+      margin: 0;
+      width: 300px;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    
+    .timer {
+    padding: 5px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff1e9;
+    font-size: 26px;
+  }
+    .menu {
+      width: 300px;
+      display: flex;
+      flex-direction: row-reverse;
+
+      .menu-logout{
+        align-items: center;
+        display: flex;
+        color: #848484;
       }
     }
   }
-  .btn {
-    width: 150px;
-    display: inline-flex;
-    vertical-align: middle;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    line-height: 20px;
-    cursor: pointer;
-    color: rgb(69, 90, 100);
-    box-shadow: none;
-    height: 32px;
-    font-size: 13px;
-    border-radius: 3px;
-    transition: all 0.18s ease-in-out 0s;
-    outline: 0px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(69, 90, 100);
-    border-image: initial;
-    background: transparent;
-    padding: 0px 9px;
-    &:hover {
-      border-color: #263238;
-      color: #263238;
-      background-color: #eceff1;
+  
+  main {
+    padding-bottom: 100px;
+    
+    .puzzle-list {
+      margin: 0;
+      padding: 0;
+    }
+    .puzzle-list-item {
+      display: flex;
+      flex-flow: row wrap;
+      margin-bottom: 30px;
+
+      .puzzle-header {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        flex: 1 100%;
+        background: #f1f1f1;
+        border-bottom: 1px solid #4c4c4c;
+
+        b{
+          font-size: 20px;
+          color: #ef5aa1;
+        }
+      }
+    }
+
+    .puzzle-question {
+      padding: 0 20px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      border-right: 1px solid #eeeeee;
+      width: 50%;
+      flex: 1 0 0;
+
+      .content {
+        font-size: 14px;
+        color: #263238;
+        pre {
+          background: #f7f9fa;
+          padding: 10px 15px;
+          color: #263238;
+          line-height: 1.6;
+          font-size: 13px;
+          border-radius: 3px;
+          white-space: pre-wrap;
+        }
+      }
+    }
+    .puzzle-editor {
+      width: 50%;
+      flex: 1 0 0;
     }
   }
+
+  .button-run {
+    width: 100px;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: 1px solid #cecece;
+    border-radius: 2px;
+
+    &:hover {
+    border: 1px solid #989898;
+    outline: none;
+    background: #dcdcdc;
+    }
+  }
+
+  .button-save,
+  .button-submit {
+    width: 100px;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 2px;
+    border: 1px solid #ef5aa1;
+    font-size: 20px;
+    color: #ef5aa1;
+    margin-right: 50px;
+
+    &:hover {
+      outline: none;
+      background: #ef5aa1;
+      color: #fff;
+      }
+  }
+
   .CodeMirror {
     height: 60vh;
     font-size: 16px;
@@ -70,4 +145,20 @@
   iframe {
     display: none;
   }
+
+  footer {
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    z-index: 9;
+    width: 100%;
+    text-align: right;
+    margin-top: 30px;
+    text-align: center;
+    border-top: 5px solid #ef5aa1;
+    padding-top: 12px;
+    background: #fff;
+  }
+
+  
 }
