@@ -98,49 +98,23 @@ const App = () => {
         renderLoader()
       ) : (
         <div className="container">
-          <header className="header">
-            <h1> TW TECH1</h1>
-            <div className="timer">1:00:00</div>
-            <div className="menu"><a className="menu-logout">Logout</a></div>
-            </header>
           <main>
-            <section class="instruction">Instructions:</section>
-            <ul className="puzzle-list">
-            <li className="puzzle-list-item">
-              <header className="puzzle-header"><b>Question1:</b> <button className="button-run" onClick={handleClick}> Run</button></header>
-              <section class="puzzle-question">
-                <Problem content={state.data.problemStatment} />
-              </section>
-              <section class="puzzle-editor">
-                <Editor
-                  onEditorChange={onEditorChange}
-                  initialDefination={state.data.defination}
-                />
-                {state.error && renderCodeError()}
-                {state.results && renderTestResults()}
-              </section>
-            </li>
-            <li className="puzzle-list-item">
-              <header className="puzzle-header"><b>Question1:</b> <button className="button-run" onClick={handleClick}> Run</button></header>
-              <section class="puzzle-question">
-                <Problem content={state.data.problemStatment} />
-              </section>
-              <section class="puzzle-editor">
-                <Editor
-                  onEditorChange={onEditorChange}
-                  initialDefination={state.data.defination}
-                />
-                {state.error && renderCodeError()}
-                {state.results && renderTestResults()}
-              </section>
-            </li>
-            </ul>
+            <section className="left-container">
+              <Problem content={state.data.problemStatment} />
+            </section>
+            <section className="right-container">
+              <Editor
+                onEditorChange={onEditorChange}
+                initialDefination={state.data.defination}
+              />
+              {state.error && renderCodeError()}
+              {state.results && renderTestResults()}
+            </section>
             <iframe title="code iframe" ref={iframeRef}></iframe>
           </main>
-          <footer>
-            <button className="button-save">Save</button>
-            <button className="button-submit">Submit</button>
-          </footer>
+          <button className="btn" onClick={handleClick}>
+            Run
+          </button>
         </div>
       )}
     </div>
