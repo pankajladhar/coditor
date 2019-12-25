@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect, useCallback, useRef } from "react";
 import Editor from "./../Components/Editor/Editor";
-import Problem from "./../Components/Problem/problem";
+import Problem from "./../Components/Problem/Problem";
 import CodeError from "./../Components/CodeError/CodeError";
 import TestResults from "./../Components/TestResults/TestResults";
 import { fetchProblem } from "./../helpers";
