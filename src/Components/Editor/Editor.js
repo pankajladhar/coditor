@@ -14,7 +14,7 @@ const getOptions = ({ theme, mode }) => {
 
 const Editor = props => {
   const { theme, mode, onEditorChange, initialDefination } = props;
-  
+
   const options = getOptions({ theme, mode });
 
   require(`codemirror/theme/${theme}.css`);
@@ -28,7 +28,7 @@ const Editor = props => {
   };
 
   return (
-    <div className="editor">
+    <div className="editor w-full">
       <CodeMirror
         value={code}
         options={options}
@@ -41,7 +41,7 @@ const Editor = props => {
 };
 
 Editor.defaultProps = {
-  theme: "monokai",
+  theme: "neo",
   mode: "javascript"
 };
 

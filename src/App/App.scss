@@ -1,4 +1,6 @@
 .container {
+  min-height: calc(100vh - 4rem);
+  display: flex;
   main {
     display: flex;
     section {
@@ -7,17 +9,14 @@
   }
 
   .left-container {
-    padding: 0 20px;
     overflow-x: hidden;
     overflow-y: auto;
-    border-right: 1px solid #eeeeee;
+    flex: 0.7;
     .content {
       font-size: 14px;
-      color: #263238;
       pre {
         background: #f7f9fa;
         padding: 10px 15px;
-        color: #263238;
         line-height: 1.6;
         font-size: 13px;
         border-radius: 3px;
@@ -70,4 +69,54 @@
   iframe {
     display: none;
   }
+}
+
+/* my styles my rules */
+
+.instructions-section {
+  background-color: #fff;
+  padding: 2rem;
+  border-right: 1px solid #e2e8ef;
+}
+
+.code-section {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor {
+  padding: 1rem;
+}
+
+.frame {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  &.instructions {
+    height: 100%;
+  }
+}
+
+.frame-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  padding: 1rem 2rem;
+}
+
+.tabs span {
+  padding: 0.6rem 1rem;
+  display: inline-block;
+  font-weight: 500;
+  border-bottom: 3px solid #2f4769;
+}
+
+.action-bar {
 }
