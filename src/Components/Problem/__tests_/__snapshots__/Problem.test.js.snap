@@ -5,7 +5,7 @@ exports[`<TestResults />  should render properly 1`] = `
   className="content"
   dangerouslySetInnerHTML={
     Object {
-      "__html": undefined,
+      "__html": "<div>Problem statement</div>",
     }
   }
 />

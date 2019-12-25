@@ -1,12 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import TestResults from "./../problem";
+import Problem from "./../Problem";
 
 describe("<TestResults /> ", () => {
   it("should render properly", () => {
     const tree = renderer.create(
-      <TestResults
-        results={'{"Test-1":"Fail","Test-2":"Fail","Test-3":"Fail"}'}
+      <Problem
+        content={'<div>Problem statement</div>'}
       />
     );
     expect(tree.toJSON()).toMatchSnapshot();
