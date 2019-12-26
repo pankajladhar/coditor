@@ -11,9 +11,9 @@ const transpileCode = input => {
 const unitTests = (assertations, cb) => {
   return `
   const data = ${JSON.stringify(assertations)}
-  data.forEach(({input, output}, index)=>{
-    const result = ${cb}.apply(this, input)
-    results[\`Test-\${index + 1}\`] = \`\${assert(result, output)}\`;
+  data.forEach(({inputs, output,failureMsg}, index)=>{
+    const result = ${cb}.apply(this, inputs)
+    results.push({failureMsg,status:assert(result, output)});
   });
 `;
 };
@@ -21,7 +21,7 @@ const unitTests = (assertations, cb) => {
 const generateScriptTag = (code, assertations, cb) => {
   const test = unitTests(assertations, cb);
   return `<script>
-    const results = {};
+    const results = [];
     try {
       ${assert}
       ${code}

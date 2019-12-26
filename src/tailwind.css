@@ -1,0 +1,102 @@
+:root {
+  --gray-100: #f7fafc;
+  --white: #fff;
+  --indigo-900: #3c366b;
+  --gray-200: #edf2f7;
+  --gray-300: #e2e8f0;
+  --gray-400: #cbd5e0;
+  --gray-500: #a0aec0;
+  --gray-600: #718096;
+  --gray-700: #4a5568;
+  --gray-800: #2d3748;
+}
+
+.dark-theme {
+  --gray-100: #2c2839;
+  --white: #302c40;
+  --indigo-900: #c4c3d4;
+  --gray-200: #423e56;
+  --gray-300: #3d3b48;
+  --gray-400: #494558;
+  --gray-500: #6c7786;
+  --gray-600: #788190;
+  --gray-700: #9794ab;
+  --gray-800: #9eaabb;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700|Yantramanav:500,700,900&display=swap");
+@import "./icons/style.css";
+
+body {
+  @apply bg-gray-100;
+  @apply text-gray-700;
+  font-size: 14px;
+}
+
+.code-section {
+  min-height: calc(100vh - 140px);
+}
+
+div pre,
+pre code {
+  background-color: transparent !important;
+  font-family: "roboto mono" !important;
+  font-size: 14px;
+}
+span.token {
+  background-color: transparent !important;
+  font-weight: 500;
+}
+span.token.method.property-access {
+  color: #69a1c3 !important;
+}
+
+div.CodeMirror pre.CodeMirror-line,
+.CodeMirror pre.CodeMirror-line-like {
+  font-family: "roboto mono";
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  font-size: 14px;
+}
+
+.CodeMirror {
+  min-height: 420px;
+}
+
+.dark-theme .cm-s-neo.CodeMirror {
+  background-color: var(--white);
+}
+
+.cm-s-material-palenight.CodeMirror {
+  background: transparent !important;
+}
+
+.cm-s-material-palenight .CodeMirror-gutters {
+  background: transparent !important;
+}
+
+.dark-theme div pre,
+.dark-theme pre code {
+  text-shadow: var(--gray-100) !important;
+  color: #b3b0bd !important;
+}
+
+.dark-theme img {
+  filter: invert(1);
+}
+
+.dark-theme button.text-gray-100 {
+  color: #fff !important;
+}
+
+.dark-theme span.token[style="color: rgb(153, 0, 85);"] {
+  color: #ffeb3bb5 !important;
+}
+
+.dark-theme button.p-2.px-4.bg-gray-600.text-white {
+  color: #fff;
+}
