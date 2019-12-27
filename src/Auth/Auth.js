@@ -1,23 +1,22 @@
-import React from "react";
+import React, { Component } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase";
-import config from  './../configuration'
-
-// Configure Firebase.
+import { withRouter } from "react-router";
+import config from "./../configuration";
 
 firebase.initializeApp(config);
 
-class Auth extends React.Component {
-  // The component's Local state.
+class Auth extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
-    isSignedIn: false // Local signed-in state.
+    isSignedIn: false
   };
 
-  // Configure FirebaseUI.
   uiConfig = {
-    // Popup signin flow rather than redirect flow.
     signInFlow: "popup",
-    // We will display Google and Facebook as auth providers.
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.GithubAuthProvider.PROVIDER_ID,
@@ -32,7 +31,6 @@ class Auth extends React.Component {
   // Listen to the Firebase Auth state and set the local state.
   componentDidMount() {
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
       this.setState({ isSignedIn: !!user });
     });
   }
@@ -55,14 +53,23 @@ class Auth extends React.Component {
     }
     return (
       <div>
-        <p>
-          Welcome {firebase.auth().currentUser.displayName}! You are now
-          signed-in!
-        </p>
-        <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+        <div>Welcome {firebase.auth().currentUser.displayName}!</div>
+        <div>
+          <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+        </div>
+        <button
+          onClick={() => {
+            this.props.history.push("/challenge");
+          }}
+          className="bg-green-500 mt-5 text-gray-100 p-2 px-4 rounded font-medium"
+        >
+          <i class="text-base icon-zap"></i>
+          Start test
+        </button>
       </div>
     );
   }
 }
 
-export default Auth;
+export { Auth };
+export default withRouter(Auth);
