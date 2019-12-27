@@ -1,18 +1,10 @@
 import React from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase";
+import config from  './../configuration'
 
 // Configure Firebase.
-const config = {
-  apiKey: "AIzaSyCIXuJnXSWD3xccVCSezS44oauvhlH7yvM",
-  authDomain: "coditor-e2864.firebaseapp.com",
-  databaseURL: "https://coditor-e2864.firebaseio.com",
-  projectId: "coditor-e2864",
-  storageBucket: "coditor-e2864.appspot.com",
-  messagingSenderId: "307285039911",
-  appId: "1:307285039911:web:efbd62f801c6532cfd2702",
-  measurementId: "G-Q5CMY1KGVQ"
-};
+
 firebase.initializeApp(config);
 
 class Auth extends React.Component {
@@ -53,9 +45,7 @@ class Auth extends React.Component {
   render() {
     if (!this.state.isSignedIn) {
       return (
-        <div>
-          <h1>My App</h1>
-          <p>Please sign-in:</p>
+        <div className="mt-20">
           <StyledFirebaseAuth
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}
@@ -65,7 +55,6 @@ class Auth extends React.Component {
     }
     return (
       <div>
-        <h1>My App</h1>
         <p>
           Welcome {firebase.auth().currentUser.displayName}! You are now
           signed-in!
