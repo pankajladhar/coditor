@@ -17,7 +17,6 @@ const Home = props => {
         </h3>
         <Instructions />
       </section>
-      <header></header>
     </div>
   );
 };

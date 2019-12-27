@@ -16,7 +16,7 @@ const CoditorLogo = ({ size, animate, name }) => {
         viewBox="0 0 353 353"
         fill="none"
       >
-        <g clip-path="url(#clip0)">
+        <g clipPath="url(#clip0)">
           <g filter="url(#filter0_d)" id={animateClassName}>
             <rect
               x="199.658"
@@ -26,9 +26,9 @@ const CoditorLogo = ({ size, animate, name }) => {
               rx="57"
               transform="rotate(53.2373 199.658 18.6041)"
               stroke="url(#paint0_linear)"
-              stroke-width="22"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="22"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </g>
           <rect
@@ -61,9 +61,9 @@ const CoditorLogo = ({ size, animate, name }) => {
             width="403.107"
             height="403.107"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -95,9 +95,9 @@ const CoditorLogo = ({ size, animate, name }) => {
             y2="252.819"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E469B3" />
-            <stop offset="0.536458" stop-color="#714CD8" stop-opacity="0.81" />
-            <stop offset="1" stop-color="#20A4CE" />
+            <stop stopColor="#E469B3" />
+            <stop offset="0.536458" stopColor="#714CD8" stopOpacity="0.81" />
+            <stop offset="1" stopColor="#20A4CE" />
           </linearGradient>
           <linearGradient
             id="paint1_linear"
@@ -107,8 +107,8 @@ const CoditorLogo = ({ size, animate, name }) => {
             y2="212.865"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#2F5684" />
-            <stop offset="1" stop-color="#1E3D63" />
+            <stop stopColor="#2F5684" />
+            <stop offset="1" stopColor="#1E3D63" />
           </linearGradient>
           <clipPath id="clip0">
             <rect width="353" height="353" fill="white" />
