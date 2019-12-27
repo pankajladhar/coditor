@@ -8,7 +8,7 @@ const Home = props => {
   return (
     <div className="home flex h-screen">
       <section className="w-2/5 p-12 pt-6 bg-white border-r border-gray-300 flex-shrink-0">
-        <CoditorLogo />
+        <CoditorLogo name/>
         <Auth />
       </section>
       <section className="p-12 pt-6 border-gray-300 flex-grow">

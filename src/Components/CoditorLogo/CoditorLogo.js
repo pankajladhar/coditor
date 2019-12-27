@@ -1,10 +1,14 @@
 import React from "react";
 
-const CoditorLogo = ({ size, animate }) => {
+const CoditorLogo = ({ size, animate, name }) => {
   const animateClassName = animate ? "frame-rotate" : "";
   const showBlur = size > 100;
   return (
-    <div>
+    <div
+      className={
+        name ? "CoditorLogo inline-flex justify-center" : "CoditorLogo"
+      }
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}
@@ -111,6 +115,11 @@ const CoditorLogo = ({ size, animate }) => {
           </clipPath>
         </defs>
       </svg>
+      {name && (
+        <span className="text-4xl mt-6 font-display text-indigo-900 font-extrabold">
+          Coditor
+        </span>
+      )}
     </div>
   );
 };
