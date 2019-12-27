@@ -5,9 +5,8 @@ import { fetchProblem } from "./../helpers";
 import { transpileCode, generateScriptTag } from "./helpers";
 import Timer from "../Components/Timer/Timer";
 import Tabs from "../Components/Tabs/Tabs";
-import CoditorLogo from "../Components/CoditorLogo/CoditorLogo";
 import Loader from "../Components/Loader/Loader";
-import ActionBtns from "../Components/ActionBtns/ActionBtns";
+// import ActionBtns from "../Components/ActionBtns/ActionBtns";
 import {
   AssertionsSection,
   OutputSection,
@@ -128,12 +127,12 @@ const App = () => {
       ) : (
         <main className="flex  h-screen">
           <section className="w-2/5 p-12 pt-7 bg-white border-r border-gray-300 flex-shrink-0">
-            <div className="flex justify-between mb-8">
-              <CoditorLogo size={80} />
-              <span className="text-sm flex items-center">
-                <i className="icon-clock text-xl mr-1"></i> Duration: 3 hrs
-              </span>
-            </div>
+              {/* <div className="flex justify-between mb-8">
+                <CoditorLogo size={80} />
+                <span className="text-sm flex items-center">
+                  <i className="icon-clock text-xl mr-1"></i> Duration: 3 hrs
+                </span>
+              </div> */}
             <div className="instructions-section">
               <Problem content={state.data} />
             </div>
@@ -142,15 +141,15 @@ const App = () => {
             <div className="py-4 flex justify-between my-5">
               <Timer />
               <div className="flex">
-                <ActionBtns
+                {/* <ActionBtns
                   isDarkTheme={state.isDarkTheme}
                   themeChangeHandler={onThemeChange}
-                />
+                /> */}
                 <button
                   className="bg-green-500 text-gray-100 p-2 px-4 rounded font-medium"
                   onClick={handleClick}
                 >
-                  <i className="text-base icon-zap"></i> Submit code
+                  <i className="text-base icon-zap"></i> Save code
                 </button>
               </div>
             </div>
