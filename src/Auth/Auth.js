@@ -5,8 +5,6 @@ import withFirebase from "./../hooks/withFirebase";
 
 const Auth = ({ history, firebase }) => {
   const [isSignedIn, setSignedIn] = useState(false);
-  console.log(isSignedIn);
-
   const uiConfig = {
     signInFlow: "popup",
     signInOptions: [
