@@ -1,10 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
-import Home from "./../Home/Home";
-import Challenge from "./../Challenge/Challenge";
-import Challenges from "./../Challenges/Challenges";
-import withFirebase from "./../hooks/withFirebase";
-import Layout from "../Components/Layout/Layout";
+import React, { useReducer, useEffect, useCallback, useRef } from "react";
+import Editor from "./../Components/Editor/Editor";
+import Problem from "../Components/Problem/Problem";
+import { fetchProblem } from "./../helpers";
+import { transpileCode, generateScriptTag } from "./helpers";
+import Timer from "../Components/Timer/Timer";
+import Tabs from "../Components/Tabs/Tabs";
+import CoditorLogo from "../Components/CoditorLogo/CoditorLogo";
+import Loader from "../Components/Loader/Loader";
+import ActionBtns from "../Components/ActionBtns/ActionBtns";
+import {
+  AssertionsSection,
+  OutputSection,
+  TestsSection,
+  TabActionsSection
+} from "../Components/TabSections/TabSections";
+import Config from "../coditor.config";
+import "../styles.css";
+import Loader from "../Components/Loader/Loader";
 
 const App = ({ firebase }) => {
   const [isAuthenticated, setAuthenticated] = useState(false);
