@@ -6,6 +6,7 @@ import { transpileCode, generateScriptTag } from "./helpers";
 import Timer from "../Components/Timer/Timer";
 import Tabs from "../Components/Tabs/Tabs";
 import CoditorLogo from "../Components/CoditorLogo/CoditorLogo";
+import Loader from "../Components/Loader/Loader";
 import ActionBtns from "../Components/ActionBtns/ActionBtns";
 import {
   AssertionsSection,
@@ -15,7 +16,6 @@ import {
 } from "../Components/TabSections/TabSections";
 import Config from "../coditor.config";
 import "../styles.css";
-import Loader from "../Components/Loader/Loader";
 
 const appReducer = (state, action) => {
   switch (action.type) {
