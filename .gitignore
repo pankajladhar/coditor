@@ -3,3 +3,4 @@ build
 .history/
 styles.css
 configuration.js
+*.-copy.js

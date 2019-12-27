@@ -1,13 +1,21 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { Component } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import firebase from "firebase";
 import { withRouter } from "react-router";
-import withFirebase from "./../hooks/withFirebase";
+import config from "./../configuration";
 
-const Auth = ({ history, firebase }) => {
-  const [isSignedIn, setSignedIn] = useState(false);
-  console.log(isSignedIn);
+firebase.initializeApp(config);
 
-  const uiConfig = {
+class Auth extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  state = {
+    isSignedIn: false
+  };
+
+  uiConfig = {
     signInFlow: "popup",
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -15,17 +23,34 @@ const Auth = ({ history, firebase }) => {
       firebase.auth.FacebookAuthProvider.PROVIDER_ID
     ],
     callbacks: {
+      // Avoid redirects after sign-in.
       signInSuccessWithAuthResult: () => false
     }
   };
 
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
-      setSignedIn(!!user);
+  // Listen to the Firebase Auth state and set the local state.
+  componentDidMount() {
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+      this.setState({ isSignedIn: !!user });
     });
-  }, [isSignedIn, firebase]);
+  }
 
-  const renderAfterLoginView = () => {
+  // Make sure we un-register Firebase observers when the component unmounts.
+  componentWillUnmount() {
+    this.unregisterAuthObserver();
+  }
+
+  render() {
+    if (!this.state.isSignedIn) {
+      return (
+        <div className="mt-20">
+          <StyledFirebaseAuth
+            uiConfig={this.uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+        </div>
+      );
+    }
     return (
       <div>
         <div className="flex justify-between mt-10">
@@ -44,7 +69,7 @@ const Auth = ({ history, firebase }) => {
         </h2>
         <button
           onClick={() => {
-            history.push("/challenge");
+            this.props.history.push("/challenge");
           }}
           className="bg-green-500 mt-5 text-gray-100 p-2 px-4 rounded font-medium"
         >
@@ -53,25 +78,8 @@ const Auth = ({ history, firebase }) => {
         </button>
       </div>
     );
-  };
-  const renderBeforeLoginView = () => {
-    return (
-      <div className="mt-20">
-        <StyledFirebaseAuth
-          uiConfig={uiConfig}
-          firebaseAuth={firebase.auth()}
-        />
-      </div>
-    );
-  };
-
-  return (
-    <Fragment>
-      {!isSignedIn && renderBeforeLoginView()}
-      {isSignedIn && renderAfterLoginView()}
-    </Fragment>
-  );
-};
+  }
+}
 
 export { Auth };
-export default withFirebase(withRouter(Auth));
+export default withRouter(Auth);
