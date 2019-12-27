@@ -6,7 +6,7 @@ const CoditorLogo = ({ size, animate, name }) => {
   return (
     <div
       className={
-        name ? "CoditorLogo inline-flex justify-center" : "CoditorLogo"
+        name ? "CoditorLogo inline-flex justify-center items-center" : "CoditorLogo"
       }
     >
       <svg
@@ -116,7 +116,7 @@ const CoditorLogo = ({ size, animate, name }) => {
         </defs>
       </svg>
       {name && (
-        <span className="text-4xl mt-6 font-display text-indigo-900 font-extrabold">
+        <span className="text-4xl font-display text-indigo-900 font-extrabold">
           Coditor
         </span>
       )}
