@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Instructions />  should render properly 1`] = `
+<ul
+  className="text-base Instructions"
+>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+  <li
+    className="pb-3"
+  >
+    <i
+      class="icon-check-circle mr-2"
+    />
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </li>
+</ul>
+`;
