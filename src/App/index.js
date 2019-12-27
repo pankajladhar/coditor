@@ -16,7 +16,6 @@ import {
 } from "../Components/TabSections/TabSections";
 import Config from "../coditor.config";
 import "../styles.css";
-import Loader from "../Components/Loader/Loader";
 
 const App = ({ firebase }) => {
   const [isAuthenticated, setAuthenticated] = useState(false);
