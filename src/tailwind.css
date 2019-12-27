@@ -100,3 +100,19 @@ div.CodeMirror pre.CodeMirror-line,
 .dark-theme button.p-2.px-4.bg-gray-600.text-white {
   color: #fff;
 }
+
+/* animations */
+
+#frame-rotate {
+  transform-origin: 50% 50%;
+  animation: frame-rotate-animation 30s linear infinite;
+}
+
+@keyframes frame-rotate-animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(3600deg);
+  }
+}

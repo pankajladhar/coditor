@@ -5,6 +5,8 @@ import { fetchProblem } from "./../helpers";
 import { transpileCode, generateScriptTag } from "./helpers";
 import Timer from "../Components/Timer/Timer";
 import Tabs from "../Components/Tabs/Tabs";
+import CoditorLogo from "../Components/CoditorLogo/CoditorLogo";
+import Loader from "../Components/Loader/Loader";
 import ActionBtns from "../Components/ActionBtns/ActionBtns";
 import {
   AssertionsSection,
@@ -48,9 +50,6 @@ const App = () => {
 
   const [state, dispatch] = useReducer(appReducer, initialState);
   const { dark, light } = Config.themes;
-  const renderLoader = () => {
-    return <div className="loading">loading ...</div>;
-  };
 
   const onEditorChange = code => {
     dispatch({ type: "SHOW_ERRORS", payload: undefined });
@@ -125,15 +124,12 @@ const App = () => {
   return (
     <div className="app-container">
       {state.loading ? (
-        renderLoader()
+        <Loader />
       ) : (
         <main className="flex  h-screen">
-          <section className="w-2/5 p-12 pt-7 bg-white border-r border-gray-300">
+          <section className="w-2/5 p-12 pt-7 bg-white border-r border-gray-300 flex-shrink-0">
             <div className="flex justify-between mb-8">
-              <img
-                src="https://www.thoughtworks.com/imgs/tw-logo.svg"
-                className="opacity-50 w-20"
-              />
+              <CoditorLogo size={80} />
               <span className="text-sm flex items-center">
                 <i className="icon-clock text-xl mr-1"></i> Duration: 3 hrs
               </span>
@@ -142,7 +138,7 @@ const App = () => {
               <Problem content={state.data} />
             </div>
           </section>
-          <section className="flex-auto px-12">
+          <section className="flex-auto px-12 overflow-hidden">
             <div className="py-4 flex justify-between my-5">
               <Timer />
               <div className="flex">
