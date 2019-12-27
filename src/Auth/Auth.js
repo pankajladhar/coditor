@@ -53,10 +53,20 @@ class Auth extends Component {
     }
     return (
       <div>
-        <div>Welcome {firebase.auth().currentUser.displayName}!</div>
-        <div>
-          <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+        <div className="flex justify-between mt-10">
+          <div className="welcome">
+            Welcome {firebase.auth().currentUser.displayName}!
+          </div>
+          <a
+            className="underline cursor-pointer"
+            onClick={() => firebase.auth().signOut()}
+          >
+            Sign-out
+          </a>
         </div>
+        <h2 className="leading-none text-2xl mt-10 mb-5 font-display text-indigo-900 font-extrabold">
+          The life of a designer is a life of fight against the ugliness
+        </h2>
         <button
           onClick={() => {
             this.props.history.push("/challenge");
@@ -64,7 +74,7 @@ class Auth extends Component {
           className="bg-green-500 mt-5 text-gray-100 p-2 px-4 rounded font-medium"
         >
           <i class="text-base icon-zap"></i>
-          Start test
+          Start your 60 mins
         </button>
       </div>
     );
