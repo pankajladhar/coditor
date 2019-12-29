@@ -11,7 +11,7 @@ then
     rm -rf fonts
 fi
 
-if [ -d "./404.html" ]
+if [ -f "./404.html" ]
 then
     rm -rf 404.html
     cp index.html 404.html
