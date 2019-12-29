@@ -2,3 +2,4 @@ node_modules
 build
 .history/
 styles.css
+firebase.config.js

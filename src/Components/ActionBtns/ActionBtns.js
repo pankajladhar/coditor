@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 const ActionBtns = props => {
   let themeColorIcon = props.isDarkTheme ? "moon" : "sun";
-  let fullScreenIcon = "maximize-2";
+  let fullScreenIcon = "maximize";
   let codeFormatIcon = "align-left";
-  let codeResetIcon = "refresh-ccw";
+  let codeResetIcon = "trash-2";
   let actionsBtns = [
     [themeColorIcon, props.themeChangeHandler],
     [fullScreenIcon, props.fullScreenChangeHandler],
@@ -14,17 +14,23 @@ const ActionBtns = props => {
   ];
 
   return (
-    <div className="flex flex-auto rounded overflow-hidden mr-4">
+    <div className="flex flex-auto mr-3">
       {actionsBtns.map(([name, handler]) => {
         return (
           <button
-            className="bg-gray-300 text-gray-700 p-2 px-4"
+            className="text-gray-700 p-2 px-4 outline-none focus:outline-none"
             onClick={handler}
           >
             <i className={`text-base icon-${name}`}></i>
           </button>
         );
       })}
+      <button
+        class="bg-blue-400 hover:bg-blue-700 mr-2 px-5 rounded text-white flex ml-2"
+        onClick={props.saveCodeHandler}
+      >
+        Save code
+      </button>
     </div>
   );
 };
@@ -34,7 +40,8 @@ ActionBtns.defaultProps = {
   themeChangeHandler: () => {},
   fullScreenChangeHandler: () => {},
   codeFormatHandler: () => {},
-  codeResetHandler: () => {}
+  codeResetHandler: () => {},
+  saveCodeHandler: () => {}
 };
 
 ActionBtns.propTypes = {
@@ -42,7 +49,8 @@ ActionBtns.propTypes = {
   themeChangeHandler: PropTypes.func,
   fullScreenChangeHandler: PropTypes.func,
   codeFormatHandler: PropTypes.func,
-  codeResetHandler: PropTypes.func
+  codeResetHandler: PropTypes.func,
+  saveCodeHandler: PropTypes.func
 };
 
 export default ActionBtns;

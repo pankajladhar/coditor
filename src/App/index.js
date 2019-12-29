@@ -1,73 +1,79 @@
-import React, { useReducer, useEffect, useCallback, useRef } from "react";
-import Editor from "./../Components/Editor/Editor";
-import Problem from "../Components/Problem/Problem";
-import { fetchProblem } from "./../helpers";
-import { transpileCode, generateScriptTag } from "./helpers";
-import Timer from "../Components/Timer/Timer";
-import Tabs from "../Components/Tabs/Tabs";
-import CoditorLogo from "../Components/CoditorLogo/CoditorLogo";
-import Loader from "../Components/Loader/Loader";
-import ActionBtns from "../Components/ActionBtns/ActionBtns";
-import {
-  AssertionsSection,
-  OutputSection,
-  TestsSection,
-  TabActionsSection
-} from "../Components/TabSections/TabSections";
-import Config from "../coditor.config";
-import "../styles.css";
+import React, { useEffect, useState } from "react";
+import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
+import Home from "../Pages/Home/Home";
+import Challenge from "../Pages/Challenge/Challenge";
+import withFirebase from "../hooks/withFirebase";
+import SidePanel from "../Components/SidePanel/SidePanel";
+import RootLayout from "../Components/Layouts/Root";
+import Loader from "../Components/Common/Loader/Loader";
+import { Store } from "../store";
 
 const App = ({ firebase }) => {
   const [isAuthenticated, setAuthenticated] = useState(false);
+  const [isLoading, setLoadingStatus] = useState(true);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
       setAuthenticated(!!user);
+      setLoadingStatus(false);
     });
   }, [firebase]);
 
-  return (
-    <Router>
-      <div className="App">
-        <Route exact path="/" render={() => <Home />} />
-        <Route
-          exact
-          path="/challenge"
-          render={({ location }) =>
-            isAuthenticated ? (
-              <Layout>
-                <Challenges />
-              </Layout>
-            ) : (
-              <Redirect
-                to={{
-                  pathname: "/",
-                  state: { from: location }
-                }}
-              />
-            )
-          }
-        />
-        <Route
-          exact
-          path="/challenge/:challengeID"
-          render={({ location }) =>
-            isAuthenticated ? (
-              <Layout>
-                <Challenge />
-              </Layout>
-            ) : (
-              <Redirect
-                to={{
-                  pathname: "/",
-                  state: { from: location }
-                }}
-              />
-            )
-          }
-        />
+  if (isLoading) {
+    return (
+      <div className="w-screen h-screen flex items-center justify-center">
+        <Loader />
       </div>
-    </Router>
+    );
+  }
+
+  return (
+    <Store.Container>
+      <RootLayout>
+        <Router>
+          <div className="home flex h-screen">
+            <section className="w-2/6 pt-6 bg-white border-r border-gray-300 flex-shrink-0 border-r border-gray-400">
+              <Route
+                exact
+                path="/"
+                render={() => {
+                  if (isAuthenticated) {
+                    return (
+                      <SidePanel.WelcomeView
+                        user={firebase.auth().currentUser}
+                      />
+                    );
+                  } else {
+                    return <SidePanel.GuestView />;
+                  }
+                }}
+              />
+              <Route
+                path="/challenge"
+                render={() => (
+                  <SidePanel.ProblemsListView
+                    user={firebase.auth().currentUser}
+                  />
+                )}
+              />
+            </section>
+            <section className="border-gray-300 flex-grow">
+              <div className="App">
+                <Route exact path="/" render={() => <Home />} />
+                <Route
+                  exact
+                  path="/challenge/:challengeID"
+                  render={() => {
+                    if (isAuthenticated) return <Challenge />;
+                    return <Redirect to={{ pathname: "/" }} />;
+                  }}
+                />
+              </div>
+            </section>
+          </div>
+        </Router>
+      </RootLayout>
+    </Store.Container>
   );
 };
 export default withFirebase(App);

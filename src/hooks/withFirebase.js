@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import config from "./../configuration";
+import FirebaseConfig from "../firebase.config";
 import firebase from "firebase";
 
-firebase.initializeApp(config);
+firebase.initializeApp(FirebaseConfig);
 
 const firebaseContext = React.createContext(firebase);
 

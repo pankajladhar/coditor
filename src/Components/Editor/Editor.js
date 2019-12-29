@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Controlled as CodeMirror } from "react-codemirror2";
 import PropTypes from "prop-types";
 require("codemirror/mode/xml/xml.js");
@@ -20,7 +20,11 @@ const Editor = props => {
   require(`codemirror/theme/${theme}.css`);
   require(`codemirror/mode/${mode}/${mode}.js`);
 
-  const [code, setCode] = useState(initialDefination);
+  const [code, setCode] = useState(null);
+
+  useEffect(() => {
+    setCode(initialDefination);
+  }, [initialDefination]);
 
   const handleBeforeChange = value => {
     setCode(value);

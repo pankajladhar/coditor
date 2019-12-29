@@ -15,12 +15,51 @@ module.exports = {
         },
         indigo: {
           900: "var(--indigo-900)"
+        },
+        brand: {
+          google: "#ea4335",
+          facebook: "#3b5998",
+          twitter: "#1da1f2",
+          github: "#4078c0"
         }
       }
     },
 
     fontFamily: {
-      display: ["Yantramanav"]
+      display: ["Yantramanav"],
+      headline: ["Raleway"],
+      quote: ["Bad Script"]
     }
-  }
+  },
+  variants: {
+    backgroundColor: ["hover", "focus", "active", "active-hover"],
+    textColor: [
+      "hover",
+      "focus",
+      "active",
+      "group-hover",
+      "active",
+      "active-hover"
+    ]
+  },
+  plugins: [
+    function({ addVariant, e }) {
+      addVariant("active", ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.active .${e(`active${separator}${className}`)}`;
+        });
+      });
+    },
+    function({ addVariant, e }) {
+      addVariant("active-hover", ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(
+            `active-hover${separator}${className}`
+          )}:hover , .active:hover .${e(
+            `active-hover${separator}${className}`
+          )}`;
+        });
+      });
+    }
+  ]
 };
