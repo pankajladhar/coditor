@@ -35,7 +35,7 @@ const App = ({ firebase }) => {
             <section className="w-2/6 pt-6 bg-white border-r border-gray-300 flex-shrink-0 border-r border-gray-400">
               <Route
                 exact
-                path="/"
+                path="/coditor/"
                 render={() => {
                   if (isAuthenticated) {
                     return (
@@ -49,7 +49,7 @@ const App = ({ firebase }) => {
                 }}
               />
               <Route
-                path="/challenge"
+                path="/coditor/challenge"
                 render={() => (
                   <SidePanel.ProblemsListView
                     user={firebase.auth().currentUser}
@@ -62,7 +62,7 @@ const App = ({ firebase }) => {
                 <Route exact path="/" render={() => <Home />} />
                 <Route
                   exact
-                  path="/challenge/:challengeID"
+                  path="/coditor/challenge/:challengeID"
                   render={() => {
                     if (isAuthenticated) return <Challenge />;
                     return <Redirect to={{ pathname: "/" }} />;
