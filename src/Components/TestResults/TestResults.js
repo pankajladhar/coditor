@@ -23,7 +23,7 @@ const TestResults = props => {
           return (
             <li className="p-2 flex items-center border-b border-gray-400">
               <i className={`${statusClassNames} text-xl mr-2`}></i>
-              {result.failureMsg}
+              {result.scenario}
             </li>
           );
         })}
