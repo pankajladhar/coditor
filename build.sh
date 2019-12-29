@@ -11,15 +11,15 @@ then
     rm -rf fonts
 fi
 
+rm -rf precache-manifest.*
+
+mv ./build/* ./
+
 if [ -f "./404.html" ]
 then
     rm -rf 404.html
     cp index.html 404.html
 fi
-
-rm -rf precache-manifest.*
-
-mv ./build/* ./
 
 today=`date '+%Y_%m_%d__%H_%M_%S'`;
 git add .
