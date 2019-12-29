@@ -3,3 +3,5 @@ build
 .history/
 styles.css
 firebase.config.js
+.DS_Store
+coditor.css
