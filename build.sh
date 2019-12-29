@@ -11,6 +11,8 @@ then
     rm -rf fonts
 fi
 
+rm -rf precache-manifest.*
+
 mv ./build/* ./
 
 today=`date '+%Y_%m_%d__%H_%M_%S'`;
