@@ -59,13 +59,13 @@ const App = ({ firebase }) => {
             </section>
             <section className="border-gray-300 flex-grow">
               <div className="App">
-                <Route exact path="/" render={() => <Home />} />
+                <Route exact path="/coditor/" render={() => <Home />} />
                 <Route
                   exact
                   path="/coditor/challenge/:challengeID"
                   render={() => {
                     if (isAuthenticated) return <Challenge />;
-                    return <Redirect to={{ pathname: "/" }} />;
+                    return <Redirect to={{ pathname: "/coditor/" }} />;
                   }}
                 />
               </div>
