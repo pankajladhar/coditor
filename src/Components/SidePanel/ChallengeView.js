@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CoditorLogo from "../Common/CoditorLogo/CoditorLogo";
 import withFirebase from "../../hooks/withFirebase";
 import { withRouter, NavLink } from "react-router-dom";
@@ -9,9 +9,15 @@ import { firebaseOps } from "../../utils";
 
 function ChallengeView({ firebase, user, challenge }) {
   const { displayName, email } = user || {};
+  const [challengeSubmit, setChallengeSubmit] = useState(false);
 
-  const handleCodeSubmit = () => {
-    firebaseOps.submitChallenge(email);
+  const handleCodeSubmit = async () => {
+    setChallengeSubmit(true);
+    const results = await firebaseOps.submitChallenge(email);
+
+    if (results.message === "Challenge submitted sucessfully !") {
+      setChallengeSubmit(false);
+    }
   };
 
   if (!challenge) {
@@ -73,7 +79,8 @@ function ChallengeView({ firebase, user, challenge }) {
           className="bg-green-500 text-white px-10 py-4 rounded shadow-lg font-medium inline-flex uppercase"
           onClick={handleCodeSubmit}
         >
-          <i class="text-base icon-zap text-xl mr-2"></i> Submit code
+          <i class="text-base icon-zap text-xl mr-2"></i>{" "}
+          {challengeSubmit ? "Submitting code" : "Submit code"}
         </button>
       </div>
     </div>
