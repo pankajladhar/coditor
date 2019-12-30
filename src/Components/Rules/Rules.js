@@ -12,7 +12,7 @@ const rulesData = [
 const Rules = props => {
   return (
     <div className=" flex h-screen flex-col p-12">
-      <h3 class="text-4xl mb-5 font-display text-indigo-900 font-extrabold">
+      <h3 className="text-4xl mb-5 font-display text-indigo-900 font-extrabold">
         Instructions
       </h3>
       <ul>

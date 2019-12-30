@@ -42,7 +42,7 @@ function PreTestView({ firebase, history, user = {}, challenge }) {
           className="bg-green-500 text-white px-10 py-4 rounded shadow-lg font-medium inline-flex uppercase"
           onClick={handleStartChallenge}
         >
-          <i class="text-base icon-zap text-xl mr-2"></i> Start challenge
+          <i className="text-base icon-zap text-xl mr-2"></i> Start challenge
         </button>
       </div>
     </div>

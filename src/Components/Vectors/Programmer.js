@@ -20,9 +20,9 @@ function ProgrammerVector({ size }) {
           y2="347.69"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="gray" stop-opacity="0.25"></stop>
-          <stop offset="0.54" stop-color="gray" stop-opacity="0.12"></stop>
-          <stop offset="1" stop-color="gray" stop-opacity="0.1"></stop>
+          <stop offset="0" stopColor="gray" stopOpacity="0.25"></stop>
+          <stop offset="0.54" stopColor="gray" stopOpacity="0.12"></stop>
+          <stop offset="1" stopColor="gray" stopOpacity="0.1"></stop>
         </linearGradient>
       </defs>
       <title>programming</title>
@@ -379,8 +379,8 @@ function ProgrammerVector({ size }) {
         y2="341.86"
         fill="none"
         stroke="#6c63ff"
-        stroke-miterlimit="10"
-        stroke-width="2"
+        strokeMiterlimit="10"
+        strokeWidth="2"
       ></line>
       <line
         x1="198.99"
@@ -389,8 +389,8 @@ function ProgrammerVector({ size }) {
         y2="354.34"
         fill="none"
         stroke="#6c63ff"
-        stroke-miterlimit="10"
-        stroke-width="2"
+        strokeMiterlimit="10"
+        strokeWidth="2"
       ></line>
       <line
         x1="198.99"
@@ -399,8 +399,8 @@ function ProgrammerVector({ size }) {
         y2="366.81"
         fill="none"
         stroke="#6c63ff"
-        stroke-miterlimit="10"
-        stroke-width="2"
+        strokeMiterlimit="10"
+        strokeWidth="2"
       ></line>
     </svg>
   );
