@@ -9,7 +9,7 @@
     "build:css": "postcss src/styles/main.css -o src/styles/coditor.css --env production",
     "watch:css": "postcss src/styles/main.css -o src/styles/coditor.css -w",
     "start:react": "react-scripts start",
-    "build:react": "PUBLIC_URL=. react-scripts build",
+    "build:react": "PUBLIC_URL=/coditor react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
