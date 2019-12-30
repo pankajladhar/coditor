@@ -5,6 +5,7 @@ import Challenge from "../Pages/Challenge/Challenge";
 import withFirebase from "../hooks/withFirebase";
 import SidePanel from "../Components/SidePanel/SidePanel";
 import RootLayout from "../Components/Layouts/Root";
+import ChildLayout from "../Components/Layouts/Child";
 import Loader from "../Components/Common/Loader/Loader";
 import { Store } from "../store";
 
@@ -31,46 +32,49 @@ const App = ({ firebase }) => {
     <Store.Container>
       <RootLayout>
         <Router>
-          <div className="home flex h-screen">
-            <section className="w-2/6 pt-6 bg-white border-r border-gray-300 flex-shrink-0 border-r border-gray-400">
-              <Route
-                exact
-                path="/coditor"
-                render={() => {
-                  if (isAuthenticated) {
-                    return (
-                      <SidePanel.WelcomeView
-                        user={firebase.auth().currentUser}
-                      />
-                    );
-                  } else {
-                    return <SidePanel.GuestView />;
-                  }
-                }}
-              />
-              <Route
-                path="/coditor/challenge"
-                render={() => (
+          <Route
+            exact
+            path="/coditor"
+            render={() => {
+              const leftComponent = () => {
+                if (isAuthenticated) {
+                  return (
+                    <SidePanel.WelcomeView user={firebase.auth().currentUser} />
+                  );
+                } else {
+                  return <SidePanel.GuestView />;
+                }
+              };
+              const rightComponent = () => <Home />;
+              const content = {
+                leftComponent: leftComponent,
+                rightComponent: rightComponent
+              };
+              return <ChildLayout content={content} />;
+            }}
+          />
+          <Route
+            exact
+            path="/coditor/challenge/:challengeID"
+            render={() => {
+              const leftComponent = () => {
+                return (
                   <SidePanel.ProblemsListView
                     user={firebase.auth().currentUser}
                   />
-                )}
-              />
-            </section>
-            <section className="border-gray-300 flex-grow">
-              <div className="App">
-                <Route exact path="/coditor" render={() => <Home />} />
-                <Route
-                  exact
-                  path="/coditor/challenge/:challengeID"
-                  render={() => {
-                    if (isAuthenticated) return <Challenge />;
-                    return <Redirect to={{ pathname: "/coditor" }} />;
-                  }}
-                />
-              </div>
-            </section>
-          </div>
+                );
+              };
+              const rightComponent = () => {
+                if (isAuthenticated) return <Challenge />;
+                return <Redirect to={{ pathname: "/coditor" }} />;
+              };
+              const content = {
+                leftComponent: leftComponent,
+                rightComponent: rightComponent
+              };
+              return <ChildLayout content={content} />;
+            }}
+          />
         </Router>
       </RootLayout>
     </Store.Container>
