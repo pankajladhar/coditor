@@ -28,6 +28,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* purgecss start ignore */
+
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Bad+Script|Raleway:700,800,900|Yantramanav:500,700,900&display=swap");
 @import "./icons/style.css";
 
@@ -126,3 +128,5 @@ div.cm-s-neo.CodeMirror {
     transform: rotate(3600deg);
   }
 }
+
+/* purgecss end ignore */
