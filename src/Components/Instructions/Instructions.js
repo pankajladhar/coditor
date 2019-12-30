@@ -8,10 +8,10 @@ const Instructions = ({ data }) => {
       <div className="my-4 text-lg">Examples</div>
       <ul>
         {data.examples &&
-          data.examples.map(example => {
+          data.examples.map((example, index) => {
             const { functionExample, expectedOutput, comment } = example;
             return (
-              <li className="flex mb-1">
+              <li className="flex mb-1" key={`Instructions-${index}`}>
                 <span className="bg-gray-300 py-1 px-2 rounded mr-3 text-gray-700">
                   {functionExample}
                 </span>

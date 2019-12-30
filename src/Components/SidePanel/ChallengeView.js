@@ -43,7 +43,7 @@ function ChallengeView({ firebase, user, challenge }) {
       <div>
         {challenge.map((c, i) => {
           return (
-            <NavLink to={`/coditor/challenge/${c.id}`} activeClassName="active">
+            <NavLink to={`/coditor/challenge/${c.id}`} activeClassName="active" key={`NavLink-${i}`}>
               <div className="flex items-center my-3 p-3 rounded-lg active:bg-blue-700 active:text-gray-100  hover:bg-gray-200">
                 <i
                   className={`icon-number-${i +

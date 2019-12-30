@@ -3,6 +3,7 @@ import Editor from "./../../Components/Editor/Editor";
 import { transpileCode, generateScriptTag } from "./helpers";
 import Tabs from "../../Components/Common/Tabs/Tabs";
 import ActionBtns from "../../Components/ActionBtns/ActionBtns";
+import { firebaseOps } from "./../../utils/firebaseOps";
 import {
   OutputSection,
   TestsSection,
@@ -11,6 +12,7 @@ import {
 import { AppConfig } from "../../config";
 import Instructions from "../../Components/Instructions/Instructions";
 import withCurrentProblem from "../../hooks/withCurrentProblem";
+import withFirebase from "../../hooks/withFirebase";
 
 const appReducer = (state, action) => {
   switch (action.type) {
@@ -27,7 +29,7 @@ const appReducer = (state, action) => {
   }
 };
 
-const Challenge = ({ problem }) => {
+const Challenge = ({ problem, currentUser }) => {
   const initialState = {
     loading: true,
     data: {},
@@ -102,6 +104,13 @@ const Challenge = ({ problem }) => {
     document.body.classList[method]("dark-theme");
   }, [state.isDarkTheme]);
 
+  const onSaveCode = async() => {
+    const doc = currentUser.email;
+    const result = await firebaseOps.saveCode(doc, problem.id, state.code);
+    console.log(result)
+
+  };
+
   const actionsHandler = () => {
     const { defaultActiveTab, hiddenTabs } = AppConfig.codeTabs;
     return {
@@ -149,6 +158,7 @@ const Challenge = ({ problem }) => {
           <Tabs.Extra>
             <div className="flex">
               <ActionBtns
+                saveCodeHandler={onSaveCode}
                 isDarkTheme={state.isDarkTheme}
                 themeChangeHandler={onThemeChange}
               />
@@ -162,4 +172,4 @@ const Challenge = ({ problem }) => {
   );
 };
 
-export default withCurrentProblem(Challenge);
+export default withFirebase(withCurrentProblem(Challenge));
