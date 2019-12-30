@@ -13,7 +13,7 @@ const TestsSection = ({ results }) => {
 const OutputSection = ({ output }) => {
   return (
     <div className=" rounded p-6 bg-gray-100" style={{ minHeight: "205px" }}>
-      <CodeError error={output} />;
+      <CodeError error={output} />
     </div>
   );
 };

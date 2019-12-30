@@ -6,7 +6,7 @@ const CodeError = ({ error }) => {
 };
 
 CodeError.propTypes = {
-  error: PropTypes.string.isRequired
+  error: PropTypes.string
 };
 
 export default CodeError;

@@ -76,8 +76,10 @@ const Challenge = ({ problem }) => {
   };
 
   const loadData = useCallback(async () => {
+    dispatch({ type: "SHOW_ERRORS", payload: undefined });
+    dispatch({ type: "SHOW_RESULTS", payload: undefined });
     dispatch({ type: "STORE_CODE", payload: problem && problem.scaffoldCode });
-  }, []);
+  }, [problem]);
 
   const messageListner = e => {
     window.addEventListener("message", e => {
