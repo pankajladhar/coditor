@@ -41,7 +41,7 @@ function ChallengeView({ firebase, user, challenge }) {
         <Timer />
       </div>
       <div>
-        {challenge.problems.map((c, i) => {
+        {challenge.map((c, i) => {
           return (
             <NavLink to={`/coditor/challenge/${c.id}`} activeClassName="active">
               <div className="flex items-center my-3 p-3 rounded-lg active:bg-blue-700 active:text-gray-100  hover:bg-gray-200">
@@ -52,8 +52,7 @@ function ChallengeView({ firebase, user, challenge }) {
                 <div className="flex-1 overflow-hidden">
                   <div className="font-semibold text-base">{c.title}</div>
                   <div className="text-gray-600 ellipsis active:text-gray-100">
-                    Lorem ipsum, or lipsum as it is sometimes known, is dummy
-                    text used in laying out print, graphic or web designs.{" "}
+                    {c.description}.{" "}
                   </div>
                 </div>
                 <i className="icon-check-circle p-1 text-xl text-gray-500 active:text-white opacity-50"></i>

@@ -14,4 +14,5 @@ const withFirebase = WrappedComponent => {
   return ComponentWithFirebaseCtx;
 };
 
+export { firebase };
 export default withFirebase;

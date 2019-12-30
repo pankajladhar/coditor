@@ -8,7 +8,7 @@ import withCurrentProblem from "../../hooks/withCurrentProblem";
 function PreTestView({ firebase, history, user = {}, challenge }) {
   const { displayName } = user || {};
   const handleStartChallenge = () => {
-    history.push(`/coditor/challenge/${challenge.problems[0].id}`);
+    history.push(`/coditor/challenge/${challenge[0].id}`);
   };
   return (
     <div className="px-10 flex h-full flex-col">

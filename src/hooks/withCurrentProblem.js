@@ -9,7 +9,7 @@ const withCurrentProblem = WrappedComponent => {
     let { challengeID } = useParams();
     let challenge = appState.get(ConstantsConfig.STATE_KEYS.CHALLENGE);
     let problem = challenge
-      ? challenge.problems.find(c => c.id == challengeID)
+      ? challenge.find(c => c.id === challengeID)
       : null;
     return (
       <WrappedComponent {...props} challenge={challenge} problem={problem} />
