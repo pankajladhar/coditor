@@ -8,6 +8,7 @@ import RootLayout from "../Components/Layouts/Root";
 import ChildLayout from "../Components/Layouts/Child";
 import Loader from "../Components/Common/Loader/Loader";
 import { Store } from "../store";
+import Submission from "../Pages/Submission/Submission";
 // import { useBeforeunload } from "react-beforeunload";
 
 const App = ({ firebase }) => {
@@ -76,6 +77,11 @@ const App = ({ firebase }) => {
               };
               return <ChildLayout content={content} />;
             }}
+          />
+          <Route
+            exact
+            path="/coditor/submission"
+            render={() => <Submission />}
           />
         </Router>
       </RootLayout>

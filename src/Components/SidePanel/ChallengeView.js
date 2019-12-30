@@ -7,7 +7,7 @@ import withCurrentProblem from "../../hooks/withCurrentProblem";
 import Loader from "../Common/Loader/Loader";
 import { firebaseOps } from "../../utils";
 
-function ChallengeView({ firebase, user, challenge }) {
+function ChallengeView({ firebase, user, challenge, history }) {
   const { displayName, email } = user || {};
   const [challengeSubmit, setChallengeSubmit] = useState(false);
 
@@ -17,6 +17,7 @@ function ChallengeView({ firebase, user, challenge }) {
 
     if (results.message === "Challenge submitted sucessfully !") {
       setChallengeSubmit(false);
+      history.push("/coditor/submission");
     }
   };
 
