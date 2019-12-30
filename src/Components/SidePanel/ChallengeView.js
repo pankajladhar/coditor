@@ -5,11 +5,14 @@ import { withRouter, NavLink } from "react-router-dom";
 import Timer from "../Timer/Timer";
 import withCurrentProblem from "../../hooks/withCurrentProblem";
 import Loader from "../Common/Loader/Loader";
+import { firebaseOps } from "../../utils";
 
 function ChallengeView({ firebase, user, challenge }) {
-  const { displayName } = user || {};
+  const { displayName, email } = user || {};
 
-  const handleCodeSubmit = () => {};
+  const handleCodeSubmit = () => {
+    firebaseOps.submitChallenge(email);
+  };
 
   if (!challenge) {
     return (
@@ -43,7 +46,11 @@ function ChallengeView({ firebase, user, challenge }) {
       <div>
         {challenge.map((c, i) => {
           return (
-            <NavLink to={`/coditor/challenge/${c.id}`} activeClassName="active" key={`NavLink-${i}`}>
+            <NavLink
+              to={`/coditor/challenge/${c.id}`}
+              activeClassName="active"
+              key={`NavLink-${i}`}
+            >
               <div className="flex items-center my-3 p-3 rounded-lg active:bg-blue-700 active:text-gray-100  hover:bg-gray-200">
                 <i
                   className={`icon-number-${i +

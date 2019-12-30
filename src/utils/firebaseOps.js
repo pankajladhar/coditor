@@ -18,6 +18,16 @@ const firebaseOps = {
     };
     await dbRef.set(data);
     return { message: "Code saved sucessfully !" };
+  },
+  submitChallenge: async doc => {
+    const dbRef = db.collection("users").doc(doc);
+    const oldData = await dbRef.get();
+    const newData = {
+      ...oldData.data(),
+      challengeSubmitted: true
+    };
+    await dbRef.set(newData);
+    return { message: "Challenge submitted sucessfully !" };
   }
 };
 
