@@ -27,7 +27,7 @@ const appReducer = (state, action) => {
   }
 };
 
-const Challenge = ({ challenge, problem }) => {
+const Challenge = ({ problem }) => {
   const initialState = {
     loading: true,
     data: {},
@@ -79,8 +79,7 @@ const Challenge = ({ challenge, problem }) => {
     dispatch({ type: "STORE_CODE", payload: problem && problem.scaffoldCode });
   }, []);
 
-  useEffect(() => {
-    loadData();
+  const messageListner = e => {
     window.addEventListener("message", e => {
       if (e.data.type === "RUN_TIME_ERROR") {
         dispatch({ type: "SHOW_ERRORS", payload: e.data.response });
@@ -89,6 +88,11 @@ const Challenge = ({ challenge, problem }) => {
         dispatch({ type: "SHOW_RESULTS", payload: e.data.response });
       }
     });
+  };
+
+  useEffect(() => {
+    loadData();
+    messageListner();
   }, [loadData]);
 
   useEffect(() => {
