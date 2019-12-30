@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
-import Home from "../Pages/Home/Home";
+import Rules from "../Components/Rules/Rules";
 import Challenge from "../Pages/Challenge/Challenge";
 import withFirebase from "../hooks/withFirebase";
 import SidePanel from "../Components/SidePanel/SidePanel";
@@ -8,8 +8,10 @@ import RootLayout from "../Components/Layouts/Root";
 import ChildLayout from "../Components/Layouts/Child";
 import Loader from "../Components/Common/Loader/Loader";
 import { Store } from "../store";
+// import { useBeforeunload } from "react-beforeunload";
 
 const App = ({ firebase }) => {
+  // useBeforeunload(event => event.preventDefault());
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [isLoading, setLoadingStatus] = useState(true);
 
@@ -45,7 +47,7 @@ const App = ({ firebase }) => {
                   return <SidePanel.GuestView />;
                 }
               };
-              const rightComponent = () => <Home />;
+              const rightComponent = () => <Rules />;
               const content = {
                 leftComponent: leftComponent,
                 rightComponent: rightComponent
