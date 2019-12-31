@@ -20,7 +20,7 @@ module.exports = {
           google: "#ea4335",
           facebook: "#3b5998",
           twitter: "#1da1f2",
-          github: "#4078c0"
+          github: "#24292e"
         }
       }
     },
