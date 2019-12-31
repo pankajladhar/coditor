@@ -16,6 +16,8 @@ function RootLayout({ children }) {
   return <div>{children}</div>;
 }
 
-RootLayout.propTypes = {};
+RootLayout.propTypes = {
+  children: PropTypes.any
+};
 
 export default RootLayout;

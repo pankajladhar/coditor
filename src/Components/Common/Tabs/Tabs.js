@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 function Tabs({ children, actionsHandler }) {

@@ -17,7 +17,7 @@ const TestResults = props => {
       <ul>
         {results.map(result => {
           let statusClassNames =
-            result.status == "Fail"
+            result.status === "Fail"
               ? "icon-x-circle text-red-500"
               : "icon-check-circle text-green-500";
           return (

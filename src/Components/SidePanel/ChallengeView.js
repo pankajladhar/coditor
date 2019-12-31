@@ -80,7 +80,7 @@ function ChallengeView({ firebase, user, challenge, history }) {
           className="bg-green-500 text-white px-10 py-4 rounded shadow-lg font-medium inline-flex uppercase"
           onClick={handleCodeSubmit}
         >
-          <i class="text-base icon-zap text-xl mr-2"></i>{" "}
+          <i className="text-base icon-zap text-xl mr-2"></i>{" "}
           {challengeSubmit ? "Submitting code" : "Submit code"}
         </button>
       </div>
