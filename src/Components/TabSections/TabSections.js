@@ -4,7 +4,7 @@ import CodeError from "../CodeError/CodeError";
 
 const TestsSection = ({ results }) => {
   return (
-    <div className=" rounded p-6 bg-gray-100" style={{ minHeight: "205px" }}>
+    <div className="rounded p-6 bg-gray-100" style={{ minHeight: "205px" }}>
       <TestResults results={results} />
     </div>
   );
@@ -12,7 +12,7 @@ const TestsSection = ({ results }) => {
 
 const OutputSection = ({ output }) => {
   return (
-    <div className=" rounded p-6 bg-gray-100" style={{ minHeight: "205px" }}>
+    <div className="rounded text-red-600 text-xs p-6 bg-gray-100 leading-none" style={{ minHeight: "205px" }}>
       <CodeError error={output} />
     </div>
   );
