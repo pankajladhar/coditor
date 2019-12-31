@@ -61,10 +61,12 @@ const Challenge = ({ problem, currentUser }) => {
       transpiledCode = transpileCode(state.code);
       if (actions.switchTab) actions.switchTab("Tests");
     } catch ({ stack }) {
+      const text =
+        process.env.NODE_ENV === "development" ? "at Parser." : "at t.n.raise";
       actions.switchTab("Output");
       dispatch({
         type: "SHOW_ERRORS",
-        payload: stack.substring(0, stack.indexOf("at Parser."))
+        payload: stack.substring(0, stack.indexOf(text))
       });
       return;
     }
@@ -104,11 +106,10 @@ const Challenge = ({ problem, currentUser }) => {
     document.body.classList[method]("dark-theme");
   }, [state.isDarkTheme]);
 
-  const onSaveCode = async() => {
+  const onSaveCode = async () => {
     const doc = currentUser.email;
     const result = await firebaseOps.saveCode(doc, problem.id, state.code);
-    console.log(result)
-
+    console.log(result);
   };
 
   const actionsHandler = () => {
