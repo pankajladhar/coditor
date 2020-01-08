@@ -4,7 +4,7 @@ import { Store } from "../../store";
 import { firebaseOps } from "../../utils";
 import { ConstantsConfig } from "../../config";
 
-function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   let state = Store.useStore();
   let keyName = ConstantsConfig.STATE_KEYS.CHALLENGE;
   if (!state.get(keyName)) {
@@ -14,7 +14,7 @@ function RootLayout({ children }) {
   }
 
   return <div>{children}</div>;
-}
+};
 
 RootLayout.propTypes = {
   children: PropTypes.any
