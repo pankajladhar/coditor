@@ -3,12 +3,19 @@ import renderer from "react-test-renderer";
 import TestResults from "./../TestResults";
 
 describe("<TestResults /> ", () => {
-  xit("should render properly", () => {
+  it("should render properly", () => {
     const tree = renderer.create(
       <TestResults
-        results={'{"Test-1":"Fail","Test-2":"Fail","Test-3":"Fail"}'}
+        results={
+          '[{"scenario":"Should reverse the digits","status":"Fail"},{"scenario":"Should reverse the negative digits","status":"Pass"},{"scenario":"Should ignore the trailing zero","status":"Fail"}]'
+        }
       />
     );
+    expect(tree.toJSON()).toMatchSnapshot();
+  });
+
+  it("should render properly when results are not present", () => {
+    const tree = renderer.create(<TestResults />);
     expect(tree.toJSON()).toMatchSnapshot();
   });
 });

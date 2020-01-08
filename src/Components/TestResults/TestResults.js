@@ -15,13 +15,16 @@ const TestResults = props => {
         <span className="font-bold text-red-500">{failedCount} failed!</span>
       </div>
       <ul>
-        {results.map(result => {
+        {results.map((result, index) => {
           let statusClassNames =
             result.status === "Fail"
               ? "icon-x-circle text-red-500"
               : "icon-check-circle text-green-500";
           return (
-            <li className="p-2 flex items-center border-b border-gray-400">
+            <li
+              key={`test-results-${index}`}
+              className="p-2 flex items-center border-b border-gray-400"
+            >
               <i className={`${statusClassNames} text-xl mr-2`}></i>
               {result.scenario}
             </li>
@@ -32,7 +35,7 @@ const TestResults = props => {
   );
 };
 TestResults.propTypes = {
-  results: PropTypes.string.isRequired
+  results: PropTypes.string
 };
 
 export default TestResults;

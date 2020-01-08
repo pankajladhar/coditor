@@ -1,9 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TestResults />  should render properly 1`] = `
-<pre
-  className="sucess"
->
-  {"Test-1":"Fail","Test-2":"Fail","Test-3":"Fail"}
-</pre>
+<div>
+  <div
+    className="mb-3"
+  >
+    <span
+      className="font-bold text-green-500 mr-3"
+    >
+      1
+       Passed
+    </span>
+    <span
+      className="font-bold text-red-500"
+    >
+      2
+       failed!
+    </span>
+  </div>
+  <ul>
+    <li
+      className="p-2 flex items-center border-b border-gray-400"
+    >
+      <i
+        className="icon-x-circle text-red-500 text-xl mr-2"
+      />
+      Should reverse the digits
+    </li>
+    <li
+      className="p-2 flex items-center border-b border-gray-400"
+    >
+      <i
+        className="icon-check-circle text-green-500 text-xl mr-2"
+      />
+      Should reverse the negative digits
+    </li>
+    <li
+      className="p-2 flex items-center border-b border-gray-400"
+    >
+      <i
+        className="icon-x-circle text-red-500 text-xl mr-2"
+      />
+      Should ignore the trailing zero
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`<TestResults />  should render properly when results are not present 1`] = `
+<div>
+  <div
+    className="mb-3"
+  >
+    <span
+      className="font-bold text-green-500 mr-3"
+    >
+      0
+       Passed
+    </span>
+    <span
+      className="font-bold text-red-500"
+    >
+      0
+       failed!
+    </span>
+  </div>
+  <ul />
+</div>
 `;
