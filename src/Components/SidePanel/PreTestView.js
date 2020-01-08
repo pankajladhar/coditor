@@ -5,7 +5,7 @@ import ProgrammerVector from "../Vectors/Programmer";
 import { withRouter } from "react-router-dom";
 import withCurrentProblem from "../../hooks/withCurrentProblem";
 
-function PreTestView({ firebase, history, user = {}, challenge }) {
+const PreTestView = ({ firebase, history, user = {}, challenge }) => {
   const { displayName } = user || {};
   const handleStartChallenge = () => {
     history.push(`/coditor/challenge/${challenge[0].id}`);
@@ -47,6 +47,6 @@ function PreTestView({ firebase, history, user = {}, challenge }) {
       </div>
     </div>
   );
-}
+};
 
 export default withFirebase(withRouter(withCurrentProblem(PreTestView)));

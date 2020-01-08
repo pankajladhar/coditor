@@ -88,4 +88,5 @@ function ChallengeView({ firebase, user, challenge, history }) {
   );
 }
 
+export { ChallengeView };
 export default withFirebase(withRouter(withCurrentProblem(ChallengeView)));
