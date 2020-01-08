@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render properly 1`] = `
+<div
+  className=" flex h-screen flex-col p-12"
+>
+  <h3
+    className="text-4xl mb-5 font-display text-indigo-900 font-extrabold"
+  >
+    Instructions
+  </h3>
+  <ul>
+    <li>
+      1. some basic challenge rules and Instructions
+    </li>
+    <li>
+      2. some basic challenge rules and Instructions
+    </li>
+    <li>
+      3. some basic challenge rules and Instructions
+    </li>
+    <li>
+      4. some basic challenge rules and Instructions
+    </li>
+    <li>
+      5. some basic challenge rules and Instructions
+    </li>
+    <li>
+      6. some basic challenge rules and Instructions
+    </li>
+  </ul>
+</div>
+`;

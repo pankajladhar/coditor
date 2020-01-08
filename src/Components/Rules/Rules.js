@@ -9,7 +9,7 @@ const rulesData = [
   "6. some basic challenge rules and Instructions"
 ];
 
-const Rules = props => {
+const Rules = () => {
   return (
     <div className=" flex h-screen flex-col p-12">
       <h3 className="text-4xl mb-5 font-display text-indigo-900 font-extrabold">
