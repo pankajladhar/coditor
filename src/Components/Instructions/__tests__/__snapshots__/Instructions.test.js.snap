@@ -1,104 +1,95 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Instructions />  should render properly 1`] = `
-<ul
-  className="text-base Instructions"
+<div
+  className="p-12"
 >
-  <li
-    className="pb-3"
+  <h3
+    className="text-3xl font-headline uppercase"
   >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
+    title
+  </h3>
+  <p
+    className="text-gray-600"
   >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
+    description
+  </p>
+  <ul />
+</div>
+`;
+
+exports[`<Instructions />  should render properly when exmaples are present 1`] = `
+<div
+  className="p-12"
+>
+  <h3
+    className="text-3xl font-headline uppercase"
   >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
+    title
+  </h3>
+  <p
+    className="text-gray-600"
   >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
+    description
+  </p>
+  <div
+    className="my-4 text-lg"
   >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
+    Examples
+  </div>
+  <ul>
+    <li
+      className="flex mb-1"
+    >
+      <span
+        className="bg-gray-300 py-1 px-2 rounded mr-3 text-gray-700"
+      >
+        functionExample
+      </span>
+      <span
+        className="mr-3 text-gray-500"
+      >
+         =&gt; 
+      </span>
+      <span
+        className="mr-3 font-bold"
+      >
+        expectedOutput
+      </span>
+      <span
+        className="text-gray-500 italic"
+      >
+        comment
+      </span>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`<Instructions />  should render properly when notes are present 1`] = `
+<div
+  className="p-12"
+>
+  <h3
+    className="text-3xl font-headline uppercase"
   >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
+    title
+  </h3>
+  <p
+    className="text-gray-600"
   >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
+    description
+  </p>
+  <ul />
+  <div
+    className="my-4 text-lg"
   >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
+    Notes
+  </div>
+  <p
+    className="text-gray-600"
   >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
-  >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
-  >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-  <li
-    className="pb-3"
-  >
-    <i
-      class="icon-check-circle mr-2"
-    />
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </li>
-</ul>
+    some notes
+  </p>
+</div>
 `;

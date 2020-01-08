@@ -5,7 +5,7 @@ const Instructions = ({ data }) => {
     <div className="p-12">
       <h3 className="text-3xl font-headline uppercase">{data.title}</h3>
       <p className="text-gray-600">{data.description}</p>
-      <div className="my-4 text-lg">Examples</div>
+      {data.examples && <div className="my-4 text-lg">Examples</div>}
       <ul>
         {data.examples &&
           data.examples.map((example, index) => {
