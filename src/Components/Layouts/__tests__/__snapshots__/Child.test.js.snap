@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render properly 1`] = `
+<div
+  className="home flex h-screen"
+>
+  <section
+    className="w-2/6 pt-6 bg-white border-r border-gray-300 flex-shrink-0 border-r border-gray-400"
+  >
+    <span>
+      Left Component
+    </span>
+  </section>
+  <section
+    className="border-gray-300 flex-grow"
+  >
+    <span>
+      Right Component
+    </span>
+  </section>
+</div>
+`;
