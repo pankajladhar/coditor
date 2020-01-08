@@ -2,7 +2,7 @@
 
 exports[`<CoditorLogo />  should render properly 1`] = `
 <div
-  className="CoditorLogo"
+  className="CoditorLogo "
 >
   <svg
     fill="none"
@@ -12,7 +12,7 @@ exports[`<CoditorLogo />  should render properly 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <g
-      clip-path="url(#clip0)"
+      clipPath="url(#clip0)"
     >
       <g
         filter="url(#filter0_d)"
@@ -22,9 +22,9 @@ exports[`<CoditorLogo />  should render properly 1`] = `
           height="226"
           rx="57"
           stroke="url(#paint0_linear)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="22"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="22"
           transform="rotate(53.2373 199.658 18.6041)"
           width="226"
           x="199.658"
@@ -55,7 +55,7 @@ exports[`<CoditorLogo />  should render properly 1`] = `
     </g>
     <defs>
       <filter
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
         filterUnits="userSpaceOnUse"
         height="403.107"
         id="filter0_d"
@@ -64,7 +64,7 @@ exports[`<CoditorLogo />  should render properly 1`] = `
         y="-20.7917"
       >
         <feFlood
-          flood-opacity="0"
+          floodOpacity="0"
           result="BackgroundImageFix"
         />
         <feColorMatrix
@@ -100,16 +100,16 @@ exports[`<CoditorLogo />  should render properly 1`] = `
         y2="252.819"
       >
         <stop
-          stop-color="#E469B3"
+          stopColor="#E469B3"
         />
         <stop
           offset="0.536458"
-          stop-color="#714CD8"
-          stop-opacity="0.81"
+          stopColor="#714CD8"
+          stopOpacity="0.81"
         />
         <stop
           offset="1"
-          stop-color="#20A4CE"
+          stopColor="#20A4CE"
         />
       </linearGradient>
       <linearGradient
@@ -121,11 +121,11 @@ exports[`<CoditorLogo />  should render properly 1`] = `
         y2="212.865"
       >
         <stop
-          stop-color="#2F5684"
+          stopColor="#2F5684"
         />
         <stop
           offset="1"
-          stop-color="#1E3D63"
+          stopColor="#1E3D63"
         />
       </linearGradient>
       <clipPath
@@ -144,7 +144,7 @@ exports[`<CoditorLogo />  should render properly 1`] = `
 
 exports[`<CoditorLogo />  should render properly when name is passed 1`] = `
 <div
-  className="CoditorLogo inline-flex justify-center"
+  className="CoditorLogo "
 >
   <svg
     fill="none"
@@ -154,7 +154,7 @@ exports[`<CoditorLogo />  should render properly when name is passed 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <g
-      clip-path="url(#clip0)"
+      clipPath="url(#clip0)"
     >
       <g
         filter="url(#filter0_d)"
@@ -164,9 +164,9 @@ exports[`<CoditorLogo />  should render properly when name is passed 1`] = `
           height="226"
           rx="57"
           stroke="url(#paint0_linear)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="22"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="22"
           transform="rotate(53.2373 199.658 18.6041)"
           width="226"
           x="199.658"
@@ -197,7 +197,7 @@ exports[`<CoditorLogo />  should render properly when name is passed 1`] = `
     </g>
     <defs>
       <filter
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
         filterUnits="userSpaceOnUse"
         height="403.107"
         id="filter0_d"
@@ -206,7 +206,7 @@ exports[`<CoditorLogo />  should render properly when name is passed 1`] = `
         y="-20.7917"
       >
         <feFlood
-          flood-opacity="0"
+          floodOpacity="0"
           result="BackgroundImageFix"
         />
         <feColorMatrix
@@ -242,16 +242,16 @@ exports[`<CoditorLogo />  should render properly when name is passed 1`] = `
         y2="252.819"
       >
         <stop
-          stop-color="#E469B3"
+          stopColor="#E469B3"
         />
         <stop
           offset="0.536458"
-          stop-color="#714CD8"
-          stop-opacity="0.81"
+          stopColor="#714CD8"
+          stopOpacity="0.81"
         />
         <stop
           offset="1"
-          stop-color="#20A4CE"
+          stopColor="#20A4CE"
         />
       </linearGradient>
       <linearGradient
@@ -263,11 +263,11 @@ exports[`<CoditorLogo />  should render properly when name is passed 1`] = `
         y2="212.865"
       >
         <stop
-          stop-color="#2F5684"
+          stopColor="#2F5684"
         />
         <stop
           offset="1"
-          stop-color="#1E3D63"
+          stopColor="#1E3D63"
         />
       </linearGradient>
       <clipPath
@@ -282,7 +282,7 @@ exports[`<CoditorLogo />  should render properly when name is passed 1`] = `
     </defs>
   </svg>
   <span
-    className="text-4xl mt-6 font-display text-indigo-900 font-extrabold"
+    className="text-4xl font-display text-indigo-900 font-extrabold"
   >
     Coditor
   </span>
@@ -291,7 +291,7 @@ exports[`<CoditorLogo />  should render properly when name is passed 1`] = `
 
 exports[`<CoditorLogo />  should render properly when size and animate property passed 1`] = `
 <div
-  className="CoditorLogo"
+  className="CoditorLogo "
 >
   <svg
     fill="none"
@@ -301,7 +301,7 @@ exports[`<CoditorLogo />  should render properly when size and animate property 
     xmlns="http://www.w3.org/2000/svg"
   >
     <g
-      clip-path="url(#clip0)"
+      clipPath="url(#clip0)"
     >
       <g
         filter="url(#filter0_d)"
@@ -311,9 +311,9 @@ exports[`<CoditorLogo />  should render properly when size and animate property 
           height="226"
           rx="57"
           stroke="url(#paint0_linear)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="22"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="22"
           transform="rotate(53.2373 199.658 18.6041)"
           width="226"
           x="199.658"
@@ -344,7 +344,7 @@ exports[`<CoditorLogo />  should render properly when size and animate property 
     </g>
     <defs>
       <filter
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
         filterUnits="userSpaceOnUse"
         height="403.107"
         id="filter0_d"
@@ -353,7 +353,7 @@ exports[`<CoditorLogo />  should render properly when size and animate property 
         y="-20.7917"
       >
         <feFlood
-          flood-opacity="0"
+          floodOpacity="0"
           result="BackgroundImageFix"
         />
         <feColorMatrix
@@ -392,16 +392,16 @@ exports[`<CoditorLogo />  should render properly when size and animate property 
         y2="252.819"
       >
         <stop
-          stop-color="#E469B3"
+          stopColor="#E469B3"
         />
         <stop
           offset="0.536458"
-          stop-color="#714CD8"
-          stop-opacity="0.81"
+          stopColor="#714CD8"
+          stopOpacity="0.81"
         />
         <stop
           offset="1"
-          stop-color="#20A4CE"
+          stopColor="#20A4CE"
         />
       </linearGradient>
       <linearGradient
@@ -413,11 +413,11 @@ exports[`<CoditorLogo />  should render properly when size and animate property 
         y2="212.865"
       >
         <stop
-          stop-color="#2F5684"
+          stopColor="#2F5684"
         />
         <stop
           offset="1"
-          stop-color="#1E3D63"
+          stopColor="#1E3D63"
         />
       </linearGradient>
       <clipPath
